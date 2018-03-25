@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainRecipesList">
+        <activity android:name=".ui.MainRecipesList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailRecipe"
+            android:name=".ui.DetailRecipe"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:parentActivityName=".MainRecipesList" />
+            android:parentActivityName=".ui.MainRecipesList" />
 
 
         <activity android:name=".WidgetConfigureActivity">

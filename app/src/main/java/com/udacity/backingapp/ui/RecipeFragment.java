@@ -1,8 +1,7 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui;
 
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -15,10 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
+import com.udacity.backingapp.R;
 import com.udacity.backingapp.adapter.RecipeAdapter;
-import com.udacity.backingapp.api.RecipeApi;
 import com.udacity.backingapp.databinding.FragmentRecipeBinding;
 import com.udacity.backingapp.model.Ingredients;
 import com.udacity.backingapp.model.Recipe;

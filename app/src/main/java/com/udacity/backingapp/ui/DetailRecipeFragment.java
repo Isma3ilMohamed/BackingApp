@@ -1,4 +1,4 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui;
 
 
 import android.content.res.Configuration;
@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.udacity.backingapp.R;
 import com.udacity.backingapp.adapter.IngredientAdapter;
 import com.udacity.backingapp.adapter.StepAdapter;
 import com.udacity.backingapp.databinding.FragmentDetailRecipeBinding;

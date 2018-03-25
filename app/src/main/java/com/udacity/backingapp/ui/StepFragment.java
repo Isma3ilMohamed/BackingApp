@@ -1,4 +1,4 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui;
 
 
 import android.databinding.DataBindingUtil;
@@ -29,6 +29,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.upstream.TransferListener;
 import com.google.android.exoplayer2.util.Util;
+import com.udacity.backingapp.R;
 import com.udacity.backingapp.databinding.FragmentStepBinding;
 import com.udacity.backingapp.model.Steps;
 

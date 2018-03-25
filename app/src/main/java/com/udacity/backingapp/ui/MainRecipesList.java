@@ -1,4 +1,4 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui;
 
 import android.databinding.DataBindingUtil;
 import android.os.Parcelable;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.udacity.backingapp.R;
 import com.udacity.backingapp.api.RecipeApi;
 import com.udacity.backingapp.api.RetrofitCall;
 import com.udacity.backingapp.databinding.MainRecipesListBinding;

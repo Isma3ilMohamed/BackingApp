@@ -11,7 +11,7 @@
             android:id="@+id/detailContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.udacity.backingapp.DetailRecipe" />
+            tools:context="com.udacity.backingapp.ui.DetailRecipe" />
 
     </android.support.constraint.ConstraintLayout>
 

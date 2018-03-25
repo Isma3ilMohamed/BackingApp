@@ -1,13 +1,12 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.udacity.backingapp.adapter.IngredientAdapter;
+import com.udacity.backingapp.R;
 import com.udacity.backingapp.databinding.ActivityDetailRecipeBinding;
 import com.udacity.backingapp.model.Ingredients;
 import com.udacity.backingapp.model.Steps;
@@ -29,6 +28,7 @@ public class DetailRecipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDetailRecipeBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail_recipe);
+
 
         // However, if we're being restored from a previous state,
         // then we don't need to do anything and should return or else
@@ -58,6 +58,7 @@ public class DetailRecipe extends AppCompatActivity {
 
 
     }
+
 
     @Override
     public void onBackPressed() {
