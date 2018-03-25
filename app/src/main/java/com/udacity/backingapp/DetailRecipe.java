@@ -62,6 +62,7 @@ public class DetailRecipe extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        getSupportFragmentManager().popBackStackImmediate();
         startActivity(new Intent(DetailRecipe.this, MainRecipesList.class));
     }
 }

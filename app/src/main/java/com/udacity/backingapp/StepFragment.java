@@ -69,12 +69,9 @@ public class StepFragment extends Fragment {
         mStepBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_step, container, false);
 
 
-        position = C.TIME_UNSET;
         if (savedInstanceState != null) {
             position = savedInstanceState.getLong(SELECTED_POSITION, C.TIME_UNSET);
 
-            //just for test
-            Toast.makeText(getContext(), "" + position, Toast.LENGTH_LONG).show();
         }
 
 
@@ -126,10 +123,6 @@ public class StepFragment extends Fragment {
         player.prepare(mediaSource);
         if (position != C.TIME_UNSET) {
             player.seekTo(position);
-            Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();
-        } else {
-            player.seekTo(position);
-            Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();
         }
     }
 

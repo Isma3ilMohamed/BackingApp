@@ -39,7 +39,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
 
     //Step Fragment
     StepFragment stepFragment;
-    private static final String STEP_FRAGMENT_KEY = "Step";
+
     //Adapters
     StepAdapter stepAdapter;
     IngredientAdapter ingredientAdapter;
@@ -108,7 +108,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
                 getLayoutManager().onSaveInstanceState();
         mBundleSaveState.putParcelable(ingredientStateKey, ingredientsRecyclerStateParcelable);
         //getFragmentManager().putFragment(mBundleSaveState,"Step",s);
-        getFragmentManager().putFragment(mBundleSaveState, STEP_FRAGMENT_KEY, stepFragment);
+
         mBundleSaveState.putParcelable(stepStateKey, stepssRecyclerStateParcelable);
     }
 
@@ -124,7 +124,6 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
                     mFragmentDetailRecipeBinding.rvIngredients.getLayoutManager().onRestoreInstanceState(ingredientsRecyclerStateParcelable);
                     stepssRecyclerStateParcelable = mBundleSaveState.getParcelable(stepStateKey);
                     mFragmentDetailRecipeBinding.rvSteps.getLayoutManager().onRestoreInstanceState(stepssRecyclerStateParcelable);
-                    stepFragment = (StepFragment) getFragmentManager().getFragment(mBundleSaveState, STEP_FRAGMENT_KEY);
                 }
             }, 50);
         }
