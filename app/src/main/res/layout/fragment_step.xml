@@ -1,0 +1,47 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context="com.udacity.backingapp.StepFragment">
+
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:id="@+id/player_view"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:focusable="true" />
+
+            <TextView
+                android:id="@+id/tv_main_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/josefinsans"
+                android:text="Description"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/player_view" />
+
+            <TextView
+                android:id="@+id/tv_detail_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="that is desction indetail"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_main_desc" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>
