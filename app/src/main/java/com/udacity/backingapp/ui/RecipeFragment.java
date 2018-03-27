@@ -2,6 +2,7 @@ package com.udacity.backingapp.ui;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -66,12 +67,17 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
 
         if (mRecipeBinding.swDetailFrame != null) {
             mTwoBane = true;
-            layoutManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false);
+            layoutManager = new GridLayoutManager(getContext(), 1,
+                    LinearLayoutManager.HORIZONTAL, false);
+            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         } else {
             mTwoBane = false;
-            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            if (getResources().getConfiguration().orientation
+                    == Configuration.ORIENTATION_PORTRAIT) {
                 layoutManager = new GridLayoutManager(getContext(), 1);
-            } else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            } else if (getResources().getConfiguration().orientation
+                    == Configuration.ORIENTATION_LANDSCAPE) {
                 layoutManager = new GridLayoutManager(getContext(), 2);
             }
         }
@@ -147,7 +153,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             Intent intent = new Intent(getActivity(), DetailRecipe.class);
             intent.putParcelableArrayListExtra("ingredients", (ArrayList<? extends Parcelable>) ingredientsList);
             intent.putParcelableArrayListExtra("steps", (ArrayList<? extends Parcelable>) stepsList);
-
+            intent.putExtra("title", recipe.getName());
             startActivity(intent);
         }
     }

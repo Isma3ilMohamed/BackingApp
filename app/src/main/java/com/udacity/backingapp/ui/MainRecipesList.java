@@ -11,6 +11,7 @@ import com.udacity.backingapp.api.RecipeApi;
 import com.udacity.backingapp.api.RetrofitCall;
 import com.udacity.backingapp.databinding.MainRecipesListBinding;
 import com.udacity.backingapp.model.Recipe;
+import com.udacity.backingapp.utils.ConnectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,27 +40,29 @@ public class MainRecipesList extends AppCompatActivity {
 
 
     void getRecipes() {
+        if (ConnectionUtils.checkConnection(this)) {
+            service = RetrofitCall.getRecipes().create(RecipeApi.class);
+            Observable<List<Recipe>> observable = service.getRecipes();
+            observable.observeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<List<Recipe>>() {
+                        @Override
+                        public void call(List<Recipe> recipes) {
+                            recipeList = recipes;
+                            //Toast.makeText(getApplicationContext(), recipes.get(2).getName(), Toast.LENGTH_LONG).show();
+                            launchRecipeFragment(recipes);
+                        }
 
-        service = RetrofitCall.getRecipes().create(RecipeApi.class);
-        Observable<List<Recipe>> observable = service.getRecipes();
-        observable.observeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<Recipe>>() {
-                    @Override
-                    public void call(List<Recipe> recipes) {
-                        recipeList = recipes;
-                        //Toast.makeText(getApplicationContext(), recipes.get(2).getName(), Toast.LENGTH_LONG).show();
-                        launchRecipeFragment(recipes);
-                    }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Toast.makeText(getApplicationContext(), throwable.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
-
-
+        } else {
+            Toast.makeText(getApplicationContext(), "Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+        }
     }
 
     void launchRecipeFragment(List<Recipe> recipes) {

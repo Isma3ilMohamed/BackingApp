@@ -27,8 +27,10 @@ public class DetailRecipe extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mDetailRecipeBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail_recipe);
+        mDetailRecipeBinding = DataBindingUtil.setContentView
+                (this, R.layout.activity_detail_recipe);
 
+        onRetainNonConfigurationInstance();
 
         // However, if we're being restored from a previous state,
         // then we don't need to do anything and should return or else
@@ -42,6 +44,9 @@ public class DetailRecipe extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             ingredientsList = getIntent().getParcelableArrayListExtra("ingredients");
             stepsList = getIntent().getParcelableArrayListExtra("steps");
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
+            }
 
         }
 

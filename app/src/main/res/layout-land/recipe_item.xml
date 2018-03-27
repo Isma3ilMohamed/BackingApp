@@ -49,7 +49,7 @@
         android:id="@+id/textView3"
         android:layout_width="48dp"
         android:layout_height="43dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_recipe_item_title"
