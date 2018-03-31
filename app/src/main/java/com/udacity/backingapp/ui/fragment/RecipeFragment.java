@@ -87,13 +87,14 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
         mRecipeBinding.rvRecipeList.setLayoutManager(layoutManager);
 
         Bundle bundle = this.getArguments();
-        recipeList = bundle.getParcelableArrayList(RECIPES);
-        adapter = new RecipeAdapter(getContext(), recipeList, this);
-        mRecipeBinding.rvRecipeList.setLayoutAnimation(
-                AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation_fall_down));
-        mRecipeBinding.rvRecipeList.scheduleLayoutAnimation();
-        mRecipeBinding.rvRecipeList.setAdapter(adapter);
-
+        if (bundle != null) {
+            recipeList = bundle.getParcelableArrayList(RECIPES);
+            adapter = new RecipeAdapter(getContext(), recipeList, this);
+            mRecipeBinding.rvRecipeList.setLayoutAnimation(
+                    AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation_fall_down));
+            mRecipeBinding.rvRecipeList.scheduleLayoutAnimation();
+            mRecipeBinding.rvRecipeList.setAdapter(adapter);
+        }
 
         return mRecipeBinding.getRoot();
     }

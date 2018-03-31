@@ -8,14 +8,18 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.isEnabled;
+import static android.support.test.espresso.matcher.ViewMatchers.withChild;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.core.AllOf.allOf;
 
 
+import android.os.Bundle;
 import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewAssertion;
 import android.support.test.espresso.contrib.RecyclerViewActions;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.RecyclerView;
@@ -34,33 +38,36 @@ import org.junit.runner.RunWith;
  */
 @RunWith(AndroidJUnit4.class)
 public class MainListTest {
+
     @Rule
     public ActivityTestRule<MainRecipesList> mainRecipesListActivityTestRule
-            = new ActivityTestRule<MainRecipesList>(MainRecipesList.class);
+            = new ActivityTestRule<MainRecipesList>(MainRecipesList.class, true, true);
 
-
-    @Before
-    public void init() {
-        mainRecipesListActivityTestRule.getActivity().getSupportFragmentManager()
-                .beginTransaction();
-    }
 
     @Test
     public void checkFragmentContainer() {
 
 
         onView(withId(R.id.mainContainer))
-                .perform(click());
+                .perform(click())
+                .check(matches(isDisplayed()));
+
+
     }
 
     @Test
     public void scrollToPosition() {
-        onView(withId(R.id.mainContainer))
-                .perform(click());
 
-        onView(withId(R.id.rv_recipe_list))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(2, click()));
+        onView(withId(R.id.mainContainer))
+                .perform(click())
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.recipe_container))
+                .perform(click())
+                .check(matches(isDisplayed()));
+        /*onView(withId(R.id.rv_recipe_list))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));*/
 
     }
+
 
 }

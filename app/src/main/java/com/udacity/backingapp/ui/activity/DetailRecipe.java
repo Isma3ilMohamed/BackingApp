@@ -36,7 +36,6 @@ public class DetailRecipe extends AppCompatActivity {
         mDetailRecipeBinding = DataBindingUtil.setContentView
                 (this, R.layout.activity_detail_recipe);
 
-        onRetainNonConfigurationInstance();
 
         // However, if we're being restored from a previous state,
         // then we don't need to do anything and should return or else
