@@ -48,10 +48,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Recipe
 
     //save instance for recycler view
     private final String recyclerStateKey = "recipe_state";
-    //declare Parcelable to store recycler view state
     private Parcelable recyclerViewStateParcelable = null;
-
-    //declare bundle to store recycler view state key & parcelable
     private static Bundle mBundleRecyclerViewState;
 
     ActivityWidgetConfigureBinding mConfigureBinding;
@@ -92,22 +89,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Recipe
             finish();
             return;
         }
-        /*btAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Gets user input
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(etUrl.getText().toString()));
-                PendingIntent pending = PendingIntent.getActivity(WidgetConfigureActivity.this,
-                        0, intent, 0);
-                views.setOnClickPendingIntent(R.id.appwidget_text, pending);
-                widgetManager.updateAppWidget(mAppWidgetId, views);
-                Intent resultValue = new Intent();
-                // Set the results as expected from a 'configure activity'.
-                resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, mAppWidgetId);
-                setResult(RESULT_OK, resultValue);
-                finish();
-            }
-        });*/
+
     }
 
 
@@ -139,7 +121,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Recipe
                     });
 
         } else {
-            Toast.makeText(getApplicationContext(), "Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.internet_connection), Toast.LENGTH_SHORT).show();
         }
     }
 

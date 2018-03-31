@@ -41,6 +41,12 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
     //Step Fragment
     StepFragment stepFragment;
 
+    public static final String INGREDIENTS = "ingredients";
+    public static final String STEPS = "steps";
+    public static final String SINGLE_STEP = "step";
+
+
+
     //Adapters
     StepAdapter stepAdapter;
     IngredientAdapter ingredientAdapter;
@@ -74,8 +80,8 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
         ingredientsList = new ArrayList<>();
 
         if (this.getArguments() != null) {
-            ingredientsList = this.getArguments().getParcelableArrayList("ingredients");
-            stepsList = this.getArguments().getParcelableArrayList("steps");
+            ingredientsList = this.getArguments().getParcelableArrayList(INGREDIENTS);
+            stepsList = this.getArguments().getParcelableArrayList(STEPS);
 
         }
 
@@ -89,7 +95,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
         //Start first step
         stepFragment = new StepFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("step", stepsList.get(0));
+        bundle.putParcelable(SINGLE_STEP, stepsList.get(0));
         stepFragment.setArguments(bundle);
         getFragmentManager().beginTransaction()
                 .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment)
@@ -139,7 +145,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
 
         StepFragment stepFragment = new StepFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable("step", step);
+        bundle.putParcelable(SINGLE_STEP, step);
         stepFragment.setArguments(bundle);
         getFragmentManager().beginTransaction()
                 .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment)

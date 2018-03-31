@@ -24,6 +24,11 @@ public class DetailRecipe extends AppCompatActivity {
     List<Steps> stepsList;
     DetailRecipeFragment fragment;
 
+    public static final String INGREDIENTS = "ingredients";
+    public static final String STEPS = "steps";
+    public static final String TITLE = "title";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +47,10 @@ public class DetailRecipe extends AppCompatActivity {
         ingredientsList = new ArrayList<>();
         stepsList = new ArrayList<>();
         if (getIntent().getExtras() != null) {
-            ingredientsList = getIntent().getParcelableArrayListExtra("ingredients");
-            stepsList = getIntent().getParcelableArrayListExtra("steps");
+            ingredientsList = getIntent().getParcelableArrayListExtra(INGREDIENTS);
+            stepsList = getIntent().getParcelableArrayListExtra(STEPS);
             if (getSupportActionBar() != null) {
-                getSupportActionBar().setTitle(getIntent().getStringExtra("title"));
+                getSupportActionBar().setTitle(getIntent().getStringExtra(TITLE));
             }
 
         }
@@ -53,8 +58,8 @@ public class DetailRecipe extends AppCompatActivity {
 
         fragment = new DetailRecipeFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredientsList);
-        bundle.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) stepsList);
+        bundle.putParcelableArrayList(INGREDIENTS, (ArrayList<? extends Parcelable>) ingredientsList);
+        bundle.putParcelableArrayList(STEPS, (ArrayList<? extends Parcelable>) stepsList);
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
                 .add(mDetailRecipeBinding.detailContainer.getId(), fragment)

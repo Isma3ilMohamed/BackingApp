@@ -41,16 +41,16 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
     GridLayoutManager layoutManager;
     //make recipe adapter
     RecipeAdapter adapter;
-
+    //Check on Tablet or phone design
     Boolean mTwoBane;
 
+    public static final String INGREDIENTS = "ingredients";
+    public static final String STEPS = "steps";
+    public static final String TITLE = "title";
+    public static final String RECIPES = "recipes";
 
-    //save instance for recycler view
     private final String recyclerStateKey = "recipe_state";
-    //declare Parcelable to store recycler view state
     private Parcelable recyclerViewStateParcelable = null;
-
-    //declare bundle to store recycler view state key & parcelable
     private static Bundle mBundleRecyclerViewState;
 
     public RecipeFragment() {
@@ -86,7 +86,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
         mRecipeBinding.rvRecipeList.setLayoutManager(layoutManager);
 
         Bundle bundle = this.getArguments();
-        recipeList = bundle.getParcelableArrayList("recipes");
+        recipeList = bundle.getParcelableArrayList(RECIPES);
         adapter = new RecipeAdapter(getContext(), recipeList, this);
         mRecipeBinding.rvRecipeList.setLayoutAnimation(
                 AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation_fall_down));
@@ -136,8 +136,8 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             stepsList = recipe.getSteps();
             DetailRecipeFragment fragment = new DetailRecipeFragment();
             Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList("ingredients", (ArrayList<? extends Parcelable>) ingredientsList);
-            bundle.putParcelableArrayList("steps", (ArrayList<? extends Parcelable>) stepsList);
+            bundle.putParcelableArrayList(INGREDIENTS, (ArrayList<? extends Parcelable>) ingredientsList);
+            bundle.putParcelableArrayList(STEPS, (ArrayList<? extends Parcelable>) stepsList);
             fragment.setArguments(bundle);
             getFragmentManager().beginTransaction()
                     .replace(R.id.sw_detail_frame, fragment)
@@ -151,9 +151,9 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             stepsList = recipe.getSteps();
 
             Intent intent = new Intent(getActivity(), DetailRecipe.class);
-            intent.putParcelableArrayListExtra("ingredients", (ArrayList<? extends Parcelable>) ingredientsList);
-            intent.putParcelableArrayListExtra("steps", (ArrayList<? extends Parcelable>) stepsList);
-            intent.putExtra("title", recipe.getName());
+            intent.putParcelableArrayListExtra(INGREDIENTS, (ArrayList<? extends Parcelable>) ingredientsList);
+            intent.putParcelableArrayListExtra(STEPS, (ArrayList<? extends Parcelable>) stepsList);
+            intent.putExtra(TITLE, recipe.getName());
             startActivity(intent);
         }
     }

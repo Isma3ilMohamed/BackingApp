@@ -22,7 +22,7 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class MainRecipesList extends AppCompatActivity {
-    public static final String TAG = "Main Activity";
+    public static final String RECIPES = "recipes";
     private RecipeApi service;
     private List<Recipe> recipeList;
     private MainRecipesListBinding mMainBinding;
@@ -61,7 +61,7 @@ public class MainRecipesList extends AppCompatActivity {
                     });
 
         } else {
-            Toast.makeText(getApplicationContext(), "Check Your Internet Connection", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getString(R.string.internet_connection), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -69,7 +69,7 @@ public class MainRecipesList extends AppCompatActivity {
 
         RecipeFragment recipeFragment = new RecipeFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("recipes", (ArrayList<? extends Parcelable>) recipes);
+        bundle.putParcelableArrayList(RECIPES, (ArrayList<? extends Parcelable>) recipes);
         recipeFragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction()

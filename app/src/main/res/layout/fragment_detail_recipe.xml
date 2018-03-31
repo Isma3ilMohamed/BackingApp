@@ -9,7 +9,6 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             tools:context="com.udacity.backingapp.ui.DetailRecipeFragment">
 
 
@@ -26,12 +25,12 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="@dimen/eight"
+                android:layout_marginTop="@dimen/sixteen"
                 android:fontFamily="@font/josefinsans"
-                android:text="Steps:"
+                android:text="@string/steps"
                 android:textAlignment="viewStart"
-                android:textSize="18sp"
+                android:textSize="@dimen/twenty_four"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/stepDetailContainer" />
@@ -40,12 +39,12 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="@dimen/eight"
+                android:layout_marginTop="@dimen/thirty_four"
                 android:fontFamily="@font/josefinsans"
-                android:text="Ingredients"
+                android:text="@string/ingredients"
                 android:textAlignment="viewStart"
-                android:textSize="18sp"
+                android:textSize="@dimen/twenty_four"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_steps" />
@@ -54,7 +53,7 @@
                 android:id="@+id/rv_ingredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/eight"
                 android:background="@color/colorPrimaryLight"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
@@ -64,10 +63,9 @@
                 android:id="@+id/rv_steps"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/eight"
                 android:background="@color/colorPrimaryLight"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

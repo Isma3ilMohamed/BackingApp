@@ -10,7 +10,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/two_hundred"
             tools:context="com.udacity.backingapp.ui.RecipeFragment">
 
             <android.support.v7.widget.RecyclerView
@@ -26,8 +26,7 @@
         <FrameLayout
             android:id="@+id/sw_detail_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteY="198dp">
+            android:layout_height="match_parent">
 
         </FrameLayout>
     </LinearLayout>

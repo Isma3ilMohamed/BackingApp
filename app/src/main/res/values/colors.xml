@@ -5,4 +5,5 @@
     <color name="colorAccent">#273469</color>
     <color name="colorPrimaryLight">#e4d9ff</color>
     <color name="rv_background">#D9D9D9</color>
+    <color name="colorIngredient">#420064</color>
 </resources>
