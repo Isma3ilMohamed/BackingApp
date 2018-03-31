@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainRecipesList">
+        <activity android:name=".ui.activity.MainRecipesList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,11 +23,11 @@
          to handle video seek to
         previous position while rotation-->
         <activity
-            android:name=".ui.DetailRecipe"
+            android:name=".ui.activity.DetailRecipe"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:parentActivityName=".ui.MainRecipesList" />
+            android:parentActivityName=".ui.activity.MainRecipesList" />
 
-        <receiver android:name=".RecipeWidget">
+        <receiver android:name=".ui.widget.RecipeWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -37,7 +37,7 @@
                 android:resource="@xml/recipe_widget_info" />
         </receiver>
 
-        <activity android:name=".WidgetConfigureActivity"></activity>
+        <activity android:name=".ui.widget.WidgetConfigureActivity"></activity>
     </application>
 
 </manifest>

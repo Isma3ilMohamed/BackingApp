@@ -3,7 +3,7 @@ package com.udacity.backingapp;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.udacity.backingapp.ui.MainRecipesList;
+import com.udacity.backingapp.ui.activity.MainRecipesList;
 
 import org.junit.Rule;
 import org.junit.runner.RunWith;

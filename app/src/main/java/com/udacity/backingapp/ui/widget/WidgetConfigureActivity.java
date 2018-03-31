@@ -1,23 +1,19 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui.widget;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.udacity.backingapp.R;
 import com.udacity.backingapp.adapter.RecipeAdapter;
 import com.udacity.backingapp.api.RecipeApi;
 import com.udacity.backingapp.api.RetrofitCall;

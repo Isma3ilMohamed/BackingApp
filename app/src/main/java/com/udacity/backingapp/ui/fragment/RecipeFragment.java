@@ -1,4 +1,4 @@
-package com.udacity.backingapp.ui;
+package com.udacity.backingapp.ui.fragment;
 
 
 import android.content.Intent;
@@ -22,6 +22,7 @@ import com.udacity.backingapp.databinding.FragmentRecipeBinding;
 import com.udacity.backingapp.model.Ingredients;
 import com.udacity.backingapp.model.Recipe;
 import com.udacity.backingapp.model.Steps;
+import com.udacity.backingapp.ui.activity.DetailRecipe;
 
 import java.util.ArrayList;
 import java.util.List;

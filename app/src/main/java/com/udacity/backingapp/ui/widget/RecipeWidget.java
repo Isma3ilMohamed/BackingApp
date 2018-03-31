@@ -1,9 +1,11 @@
-package com.udacity.backingapp;
+package com.udacity.backingapp.ui.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
+
+import com.udacity.backingapp.R;
 
 /**
  * Implementation of App Widget functionality.

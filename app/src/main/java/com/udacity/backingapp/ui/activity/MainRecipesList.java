@@ -1,4 +1,4 @@
-package com.udacity.backingapp.ui;
+package com.udacity.backingapp.ui.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Parcelable;
@@ -11,6 +11,7 @@ import com.udacity.backingapp.api.RecipeApi;
 import com.udacity.backingapp.api.RetrofitCall;
 import com.udacity.backingapp.databinding.MainRecipesListBinding;
 import com.udacity.backingapp.model.Recipe;
+import com.udacity.backingapp.ui.fragment.RecipeFragment;
 import com.udacity.backingapp.utils.ConnectionUtils;
 
 import java.util.ArrayList;

@@ -8,7 +8,7 @@
 
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="com.udacity.backingapp.WidgetConfigureActivity">
+        tools:context="com.udacity.backingapp.ui.widget.WidgetConfigureActivity">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_select_recipe"

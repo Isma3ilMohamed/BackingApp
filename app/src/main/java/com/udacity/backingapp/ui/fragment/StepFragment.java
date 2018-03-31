@@ -1,4 +1,4 @@
-package com.udacity.backingapp.ui;
+package com.udacity.backingapp.ui.fragment;
 
 
 import android.databinding.DataBindingUtil;

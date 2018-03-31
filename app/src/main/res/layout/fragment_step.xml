@@ -9,7 +9,7 @@
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context="com.udacity.backingapp.ui.StepFragment">
+            tools:context="com.udacity.backingapp.ui.fragment.StepFragment">
 
             <com.google.android.exoplayer2.ui.SimpleExoPlayerView
                 android:id="@+id/player_view"
