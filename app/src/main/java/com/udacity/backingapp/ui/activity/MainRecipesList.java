@@ -74,7 +74,7 @@ public class MainRecipesList extends AppCompatActivity {
         recipeFragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction()
-                .add(mMainBinding.container.getId(), recipeFragment)
+                .add(mMainBinding.mainContainer.getId(), recipeFragment)
                 .commit();
 
     }

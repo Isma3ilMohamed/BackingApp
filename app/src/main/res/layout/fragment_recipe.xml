@@ -2,16 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
+        android:id="@+id/recipe_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.udacity.backingapp.ui.fragment.RecipeFragment">
 
         <android.support.v7.widget.RecyclerView
-            android:background="@color/colorPrimaryLight"
-            android:layoutAnimation="@anim/layout_animation_fall_down"
             android:id="@+id/rv_recipe_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight"
+            android:layoutAnimation="@anim/layout_animation_fall_down">
 
         </android.support.v7.widget.RecyclerView>
 
