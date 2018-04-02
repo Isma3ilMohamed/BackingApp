@@ -6,16 +6,19 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:id="@+id/tablet_container"
         android:layout_height="match_parent">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/two_hundred"
+            android:id="@+id/tablet_recipe_container"
             tools:context="com.udacity.backingapp.ui.fragment.RecipeFragment">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_recipe_list"
                 android:layout_width="match_parent"
+                android:tag="@string/rv_tablet"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryLight"
                 android:layoutAnimation="@anim/layout_animation_fall_down">

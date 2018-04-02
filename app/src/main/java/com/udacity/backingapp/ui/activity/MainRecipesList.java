@@ -2,6 +2,10 @@ package com.udacity.backingapp.ui.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -11,6 +15,7 @@ import com.udacity.backingapp.api.RecipeApi;
 import com.udacity.backingapp.api.RetrofitCall;
 import com.udacity.backingapp.databinding.MainRecipesListBinding;
 import com.udacity.backingapp.model.Recipe;
+import com.udacity.backingapp.test.mIdingResource;
 import com.udacity.backingapp.ui.fragment.RecipeFragment;
 import com.udacity.backingapp.utils.ConnectionUtils;
 
@@ -23,6 +28,9 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class MainRecipesList extends AppCompatActivity {
+    @Nullable
+    private mIdingResource idingResource;
+
     public static final String RECIPES = "recipes";
     private RecipeApi service;
     private List<Recipe> recipeList;
@@ -33,6 +41,14 @@ public class MainRecipesList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mMainBinding = DataBindingUtil.setContentView(this, R.layout.main_recipes_list);
+
+        getIdlingResource();
+
+        if (idingResource != null) {
+            idingResource.setIdleState(false);
+        }
+
+
 
         recipeList = new ArrayList<>();
         getRecipes();
@@ -51,6 +67,9 @@ public class MainRecipesList extends AppCompatActivity {
                         public void call(List<Recipe> recipes) {
                             recipeList = recipes;
                             //Toast.makeText(getApplicationContext(), recipes.get(2).getName(), Toast.LENGTH_LONG).show();
+                            if (idingResource != null) {
+                                idingResource.setIdleState(false);
+                            }
                             launchRecipeFragment(recipes);
                         }
 
@@ -77,5 +96,14 @@ public class MainRecipesList extends AppCompatActivity {
                 .add(mMainBinding.mainContainer.getId(), recipeFragment)
                 .commit();
 
+    }
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (idingResource == null) {
+            idingResource = new mIdingResource();
+        }
+        return idingResource;
     }
 }

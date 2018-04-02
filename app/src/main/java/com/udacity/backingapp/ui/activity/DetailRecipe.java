@@ -62,7 +62,7 @@ public class DetailRecipe extends AppCompatActivity {
         bundle.putParcelableArrayList(STEPS, (ArrayList<? extends Parcelable>) stepsList);
         fragment.setArguments(bundle);
         getSupportFragmentManager().beginTransaction()
-                .add(mDetailRecipeBinding.detailContainer.getId(), fragment)
+                .add(mDetailRecipeBinding.detailRecipeContainer.getId(), fragment)
                 .addToBackStack(null)
                 .commit();
 

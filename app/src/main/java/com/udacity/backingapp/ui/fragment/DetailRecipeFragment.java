@@ -6,6 +6,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +23,7 @@ import com.udacity.backingapp.adapter.StepAdapter;
 import com.udacity.backingapp.databinding.FragmentDetailRecipeBinding;
 import com.udacity.backingapp.model.Ingredients;
 import com.udacity.backingapp.model.Steps;
+import com.udacity.backingapp.test.mIdingResource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,8 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class DetailRecipeFragment extends Fragment implements StepAdapter.StepListener {
+    @Nullable
+    private mIdingResource idingResource;
 
     //Data Binding Declaration
     FragmentDetailRecipeBinding mFragmentDetailRecipeBinding;
@@ -69,6 +76,13 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mFragmentDetailRecipeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_recipe, container, false);
+
+        getIdlingResource();
+
+        if (idingResource != null) {
+            idingResource.setIdleState(false);
+        }
+
         //Layout Manager
         ingredientsManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false);
         stepManager = new GridLayoutManager(getContext(), 1, LinearLayoutManager.HORIZONTAL, false);
@@ -87,21 +101,33 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
 
 
         stepAdapter = new StepAdapter(stepsList, getContext(), this);
+        if (stepAdapter != null) {
+            if (idingResource != null) {
+                idingResource.setIdleState(false);
+            }
+        }
         mFragmentDetailRecipeBinding.rvSteps.setAdapter(stepAdapter);
 
+
         ingredientAdapter = new IngredientAdapter(ingredientsList, getContext());
+        if (ingredientAdapter != null) {
+            if (idingResource != null) {
+                idingResource.setIdleState(false);
+            }
+        }
         mFragmentDetailRecipeBinding.rvIngredients.setAdapter(ingredientAdapter);
 
         //Start first step
         stepFragment = new StepFragment();
         Bundle bundle = new Bundle();
-        bundle.putParcelable(SINGLE_STEP, stepsList.get(0));
-        stepFragment.setArguments(bundle);
-        getFragmentManager().beginTransaction()
-                .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment)
-                .commit();
+        if (stepsList != null) {
+            bundle.putParcelable(SINGLE_STEP, stepsList.get(0));
+            stepFragment.setArguments(bundle);
+            getFragmentManager().beginTransaction()
+                    .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment)
+                    .commit();
 
-
+        }
         return mFragmentDetailRecipeBinding.getRoot();
     }
 
@@ -114,7 +140,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
         stepssRecyclerStateParcelable = mFragmentDetailRecipeBinding.rvSteps.
                 getLayoutManager().onSaveInstanceState();
         mBundleSaveState.putParcelable(ingredientStateKey, ingredientsRecyclerStateParcelable);
-        //getFragmentManager().putFragment(mBundleSaveState,"Step",s);
+
 
         mBundleSaveState.putParcelable(stepStateKey, stepssRecyclerStateParcelable);
     }
@@ -152,5 +178,13 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
                 .commit();
     }
 
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (idingResource == null) {
+            idingResource = new mIdingResource();
+        }
+        return idingResource;
+    }
 
 }

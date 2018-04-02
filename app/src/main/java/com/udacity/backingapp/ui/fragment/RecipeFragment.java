@@ -8,6 +8,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +26,7 @@ import com.udacity.backingapp.databinding.FragmentRecipeBinding;
 import com.udacity.backingapp.model.Ingredients;
 import com.udacity.backingapp.model.Recipe;
 import com.udacity.backingapp.model.Steps;
+import com.udacity.backingapp.test.mIdingResource;
 import com.udacity.backingapp.ui.activity.DetailRecipe;
 
 import java.util.ArrayList;
@@ -32,6 +37,11 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeListener {
+
+    @Nullable
+    private mIdingResource idingResource;
+
+
     //use dataBinding on fragment
     FragmentRecipeBinding mRecipeBinding;
     //make recipe list as a recyclerview data source
@@ -66,6 +76,13 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
         mRecipeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_recipe, container,
                 false);
 
+        getIdlingResource();
+
+        if (idingResource != null) {
+            idingResource.setIdleState(false);
+        }
+
+
         if (mRecipeBinding.swDetailFrame != null) {
             mTwoBane = true;
             layoutManager = new GridLayoutManager(getContext(), 1,
@@ -93,8 +110,15 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             mRecipeBinding.rvRecipeList.setLayoutAnimation(
                     AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_animation_fall_down));
             mRecipeBinding.rvRecipeList.scheduleLayoutAnimation();
+            if (adapter != null) {
+                if (idingResource != null) {
+                    idingResource.setIdleState(false);
+                }
+            }
             mRecipeBinding.rvRecipeList.setAdapter(adapter);
+
         }
+
 
         return mRecipeBinding.getRoot();
     }
@@ -158,5 +182,14 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             intent.putExtra(TITLE, recipe.getName());
             startActivity(intent);
         }
+    }
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (idingResource == null) {
+            idingResource = new mIdingResource();
+        }
+        return idingResource;
     }
 }
