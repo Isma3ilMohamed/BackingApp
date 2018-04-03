@@ -42,14 +42,17 @@ import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 
 /**
  * Created by The Dev Wolf on 29-03-2018.
  */
 @RunWith(AndroidJUnit4.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BackingAppTest {
 
     @Rule
@@ -61,7 +64,7 @@ public class BackingAppTest {
     * check if main container is displayed
     * */
     @Test
-    public void checkFragmentContainer() {
+    public void A_checkFragmentContainer() {
 
         onView(withId(R.id.mainContainer))
                 .perform(click())
@@ -73,7 +76,7 @@ public class BackingAppTest {
     * check if recycler view is swiped  items is clicked
     * */
     @Test
-    public void testRecyclerViewMoveToSpecificPosition() {
+    public void B_testRecyclerViewMoveToSpecificPosition() {
         onView(withId(R.id.mainContainer))
                 .perform(click());
 
@@ -93,8 +96,8 @@ public class BackingAppTest {
     * check if detail recipe activity is started
     * */
     @Test
-    public void testDetailActivityIsLaunched() {
-        testRecyclerViewMoveToSpecificPosition();
+    public void C_testDetailActivityIsLaunched() {
+        B_testRecyclerViewMoveToSpecificPosition();
         intended(hasComponent(DetailRecipe.class.getName()));
 
 
@@ -105,8 +108,8 @@ public class BackingAppTest {
     * */
 
     @Test
-    public void testExoPlayer() {
-        testRecyclerViewMoveToSpecificPosition();
+    public void D_testExoPlayer() {
+        B_testRecyclerViewMoveToSpecificPosition();
 
         onView(withId(R.id.player_view))
                 .check(matches(isDisplayed()));
@@ -120,9 +123,9 @@ public class BackingAppTest {
     * test steps recycler view
     * */
     @Test
-    public void testStepsRecyclerView() {
+    public void E_testStepsRecyclerView() {
 
-        testRecyclerViewMoveToSpecificPosition();
+        B_testRecyclerViewMoveToSpecificPosition();
         onView(withId(R.id.rv_steps))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(5, click()));
 
@@ -133,8 +136,8 @@ public class BackingAppTest {
     * test ingredients recycler view
     * */
     @Test
-    public void testIngredientsRecyclerView() {
-        testRecyclerViewMoveToSpecificPosition();
+    public void F_testIngredientsRecyclerView() {
+        G_testStepDescriptionsText();
         onView(withId(R.id.stepDetailContainer));
 
         onView(withId(R.id.rv_ingredients))
@@ -148,9 +151,9 @@ public class BackingAppTest {
     * */
 
     @Test
-    public void testStepDescriptionsText() {
+    public void G_testStepDescriptionsText() {
 
-        testStepsRecyclerView();
+        E_testStepsRecyclerView();
         // passes if the textView does not match the empty string
         onView(withId(R.id.tv_main_desc)).check(matches(not(withText(""))));
         onView(withId(R.id.tv_detail_desc)).check(matches(not(withText(""))));
