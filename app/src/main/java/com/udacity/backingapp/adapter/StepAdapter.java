@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.udacity.backingapp.R;
 import com.udacity.backingapp.model.Steps;
 
@@ -40,6 +42,16 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         Steps step = steps.get(position);
         holder.tv_step_item_id.setText(step.getShortDescription());
+        if (!step.getThumbnailURL().equals("")) {
+            Picasso.with(context)
+                    .load(step.getThumbnailURL())
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .into(holder.iv_thumb_step);
+        }
+
+
+
     }
 
     @Override
@@ -49,10 +61,12 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tv_step_item_id;
+        ImageView iv_thumb_step;
 
         public ViewHolder(View itemView) {
             super(itemView);
             tv_step_item_id = itemView.findViewById(R.id.tv_step_item_id);
+            iv_thumb_step = itemView.findViewById(R.id.iv_thumb_step);
             itemView.setOnClickListener(this);
         }
 

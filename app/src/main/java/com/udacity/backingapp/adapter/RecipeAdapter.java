@@ -46,29 +46,70 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Recipe recipe = recipeList.get(position);
-        setRecipeImage(recipe.getName(), holder.recipeImage);
+        setRecipeImage(recipe.getName(), recipe.getImage(), holder.recipeImage);
         holder.recipeTitle.setText(recipe.getName());
         holder.recipeServings.setText(String.valueOf(recipe.getServings()));
     }
 
 
-    private void setRecipeImage(String name, ImageView recipeImage) {
-        if (name.equals(NUTTELLA)) {
-            Picasso.with(mContext)
-                    .load(R.drawable.nutella)
-                    .into(recipeImage);
-        } else if (name.equals(BROWNIES)) {
-            Picasso.with(mContext)
-                    .load(R.drawable.brownies)
-                    .into(recipeImage);
-        } else if (name.equals(YELLOW_CAKE)) {
-            Picasso.with(mContext)
-                    .load(R.drawable.yellowcake)
-                    .into(recipeImage);
-        } else if (name.equals(CHEESE_CAKE)) {
-            Picasso.with(mContext)
-                    .load(R.drawable.cheesecake)
-                    .into(recipeImage);
+    private void setRecipeImage(String name, String image, ImageView recipeImage) {
+
+        if (image.equals("")) {
+            if (name.equals(NUTTELLA)) {
+                Picasso.with(mContext)
+                        .load(R.drawable.nutella)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            } else if (name.equals(BROWNIES)) {
+                Picasso.with(mContext)
+                        .load(R.drawable.brownies)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            } else if (name.equals(YELLOW_CAKE)) {
+                Picasso.with(mContext)
+                        .load(R.drawable.yellowcake)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            } else if (name.equals(CHEESE_CAKE)) {
+                Picasso.with(mContext)
+                        .load(R.drawable.cheesecake)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            }
+        } else {
+            if (name.equals(NUTTELLA)) {
+                Picasso.with(mContext)
+                        .load(image)
+                        .placeholder(R.drawable.nutella)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            } else if (name.equals(BROWNIES)) {
+                Picasso.with(mContext)
+                        .load(image)
+                        .placeholder(R.drawable.brownies)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            } else if (name.equals(YELLOW_CAKE)) {
+                Picasso.with(mContext)
+                        .load(image)
+                        .placeholder(R.drawable.yellowcake)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            } else if (name.equals(CHEESE_CAKE)) {
+                Picasso.with(mContext)
+                        .load(image)
+                        .placeholder(R.drawable.cheesecake)
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error)
+                        .into(recipeImage);
+            }
         }
     }
 

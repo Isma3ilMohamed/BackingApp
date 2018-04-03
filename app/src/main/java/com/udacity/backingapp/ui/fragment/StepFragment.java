@@ -42,9 +42,6 @@ public class StepFragment extends Fragment {
     //DataBinding Declaration
     FragmentStepBinding mStepBinding;
 
-    Bundle bundle;
-    private static final String SELECTED_POSITION = "position";
-    private long position;
 
     private Steps step;
     private String url;
@@ -70,10 +67,7 @@ public class StepFragment extends Fragment {
         mStepBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_step, container, false);
 
 
-        if (savedInstanceState != null) {
-            position = savedInstanceState.getLong(SELECTED_POSITION, C.TIME_UNSET);
 
-        }
 
 
         if (this.getArguments() != null) {
@@ -118,19 +112,16 @@ public class StepFragment extends Fragment {
         MediaSource mediaSource = new ExtractorMediaSource(
                 Uri.parse(url),
                 mediaDataSourceFactory, extractorsFactory, null, null);
-       /* MediaSource mediaSource = new HlsMediaSource(Uri.parse(url),
-                mediaDataSourceFactory, null, null);*/
+
 
         player.prepare(mediaSource);
-        if (position != C.TIME_UNSET) {
-            player.seekTo(position);
-        }
+
     }
 
 
     private void releasePlayer() {
         if (player != null) {
-            position = player.getCurrentPosition();
+
             shouldAutoPlay = player.getPlayWhenReady();
             player.release();
             player = null;
@@ -166,10 +157,4 @@ public class StepFragment extends Fragment {
         }
     }
 
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putLong(SELECTED_POSITION, position);
-    }
 }

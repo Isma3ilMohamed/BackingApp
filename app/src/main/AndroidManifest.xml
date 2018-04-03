@@ -19,12 +19,9 @@
             </intent-filter>
         </activity>
 
-        <!--configChanges added  beside it's code on StepFragment.java
-         to handle video seek to
-        previous position while rotation-->
+
         <activity
             android:name=".ui.activity.DetailRecipe"
-            android:configChanges="orientation|screenSize|keyboardHidden"
             android:parentActivityName=".ui.activity.MainRecipesList" />
 
         <receiver android:name=".ui.widget.RecipeWidget">
@@ -37,7 +34,7 @@
                 android:resource="@xml/recipe_widget_info" />
         </receiver>
 
-        <activity android:name=".ui.widget.WidgetConfigureActivity"></activity>
+        <activity android:name=".ui.widget.WidgetConfigureActivity" />
     </application>
 
 </manifest>

@@ -13,7 +13,7 @@ import android.support.test.runner.AndroidJUnit4;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.udacity.backingapp.ui.activity.MainRecipesList;
 
-import org.junit.After;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,8 +21,6 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
-import static android.support.test.espresso.action.ViewActions.swipeDown;
 import static android.support.test.espresso.action.ViewActions.swipeUp;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -43,14 +41,6 @@ public class BackingAppTabletTest {
     public IntentsTestRule<MainRecipesList> mainRecipesListActivityTestRule
             = new IntentsTestRule<MainRecipesList>(MainRecipesList.class, false,
             true);
-
-
-    @Before
-    public void setUp() throws Exception {
-
-
-
-    }
 
 
     /*
