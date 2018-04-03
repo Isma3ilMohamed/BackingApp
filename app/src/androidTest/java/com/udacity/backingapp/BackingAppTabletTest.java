@@ -8,6 +8,7 @@ import android.support.test.espresso.action.Press;
 import android.support.test.espresso.action.Swipe;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.intent.rule.IntentsTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.udacity.backingapp.ui.activity.MainRecipesList;
@@ -16,6 +17,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -34,7 +36,7 @@ import static org.hamcrest.core.AllOf.allOf;
 /**
  * Created by The Dev Wolf on 02-04-2018.
  */
-
+@RunWith(AndroidJUnit4.class)
 public class BackingAppTabletTest {
 
     @Rule
@@ -46,8 +48,7 @@ public class BackingAppTabletTest {
     @Before
     public void setUp() throws Exception {
 
-        mainRecipesListActivityTestRule.getActivity().
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
 
     }
 
@@ -68,7 +69,7 @@ public class BackingAppTabletTest {
     public void testRecyclerViewMoveToSpecificPosition() {
 
         checkFragmentContainer();
-        //takeSecond();
+        takeAsecond();
         onView(withId(R.id.rv_recipe_list)).perform(swipeUp())
                 //you can select position from 0 to 3
                 .perform(RecyclerViewActions.actionOnItemAtPosition(2, click()));
@@ -126,5 +127,13 @@ public class BackingAppTabletTest {
         return new GeneralSwipeAction(Swipe.FAST, GeneralLocation.CENTER,
                 GeneralLocation.TOP_CENTER, Press.FINGER);
 
+    }
+
+    private void takeAsecond() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -87,7 +87,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             mTwoBane = true;
             layoutManager = new GridLayoutManager(getContext(), 1,
                     LinearLayoutManager.HORIZONTAL, false);
-            getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            // getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         } else {
             mTwoBane = false;

@@ -77,6 +77,7 @@ public class BackingAppTest {
         onView(withId(R.id.mainContainer))
                 .perform(click());
 
+        takeAsecond();
         //takeSecond();
         onView(allOf(withId(R.id.rv_recipe_list), isDisplayed())).perform(swipeUp());
 
@@ -157,5 +158,11 @@ public class BackingAppTest {
     }
 
 
-
+    private void takeAsecond() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
