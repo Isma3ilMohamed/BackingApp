@@ -74,10 +74,11 @@ public class StepFragment extends Fragment {
                              Bundle savedInstanceState) {
         mStepBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_step, container, false);
 
-
+        position = C.TIME_UNSET;
+        shouldAutoPlay = true;
         if (savedInstanceState != null) {
             position = savedInstanceState.getLong(SELECTED_POSITION, C.TIME_UNSET);
-
+            shouldAutoPlay = savedInstanceState.getBoolean(PLAYER_READY);
         }
 
 
@@ -91,7 +92,7 @@ public class StepFragment extends Fragment {
             mStepBinding.playerView.setVisibility(View.GONE);
         }
 
-        shouldAutoPlay = true;
+
         bandwidthMeter = new DefaultBandwidthMeter();
 
         mediaDataSourceFactory = new DefaultDataSourceFactory(getContext(),
@@ -123,8 +124,7 @@ public class StepFragment extends Fragment {
         MediaSource mediaSource = new ExtractorMediaSource(
                 Uri.parse(url),
                 mediaDataSourceFactory, extractorsFactory, null, null);
-       /* MediaSource mediaSource = new HlsMediaSource(Uri.parse(url),
-                mediaDataSourceFactory, null, null);*/
+
 
         player.prepare(mediaSource);
 
@@ -167,11 +167,7 @@ public class StepFragment extends Fragment {
     }
 
 
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
 
-    }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
