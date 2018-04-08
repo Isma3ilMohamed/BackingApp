@@ -5,6 +5,5 @@ package com.udacity.backingapp.api;
  */
 
 public interface Constants {
-    public static final String
-            COOKING_DATA = "https://d17h27t6h515a5.cloudfront.net/";
+    String COOKING_DATA = "https://d17h27t6h515a5.cloudfront.net/";
 }

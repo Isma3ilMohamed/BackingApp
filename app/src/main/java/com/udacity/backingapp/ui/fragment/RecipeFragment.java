@@ -82,14 +82,17 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             idingResource.setIdleState(false);
         }
 
+        boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
 
-        if (mRecipeBinding.swDetailFrame != null) {
-            mTwoBane = true;
-            layoutManager = new GridLayoutManager(getContext(), 1,
-                    LinearLayoutManager.HORIZONTAL, false);
-
+        if (tabletSize) {
+            if (getResources().getConfiguration().orientation
+                    == Configuration.ORIENTATION_PORTRAIT) {
+                layoutManager = new GridLayoutManager(getContext(), 2);
+            } else if (getResources().getConfiguration().orientation
+                    == Configuration.ORIENTATION_LANDSCAPE) {
+                layoutManager = new GridLayoutManager(getContext(), 3);
+            }
         } else {
-            mTwoBane = false;
             if (getResources().getConfiguration().orientation
                     == Configuration.ORIENTATION_PORTRAIT) {
                 layoutManager = new GridLayoutManager(getContext(), 1);
@@ -153,22 +156,22 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
 
     @Override
     public void onRecipeClickListener(Recipe recipe) {
-        if (mTwoBane) {
-            ingredientsList = new ArrayList<>();
-            stepsList = new ArrayList<>();
+        //  if (mTwoBane) {
+        /*ingredientsList = new ArrayList<>();
+        stepsList = new ArrayList<>();
 
-            ingredientsList = recipe.getIngredients();
-            stepsList = recipe.getSteps();
-            DetailRecipeFragment fragment = new DetailRecipeFragment();
-            Bundle bundle = new Bundle();
-            bundle.putParcelableArrayList(INGREDIENTS, (ArrayList<? extends Parcelable>) ingredientsList);
-            bundle.putParcelableArrayList(STEPS, (ArrayList<? extends Parcelable>) stepsList);
-            fragment.setArguments(bundle);
-            getFragmentManager().beginTransaction()
-                    .replace(R.id.sw_detail_frame, fragment)
-                    .commit();
+        ingredientsList = recipe.getIngredients();
+        stepsList = recipe.getSteps();
+        DetailRecipeFragment fragment = new DetailRecipeFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList(INGREDIENTS, (ArrayList<? extends Parcelable>) ingredientsList);
+        bundle.putParcelableArrayList(STEPS, (ArrayList<? extends Parcelable>) stepsList);
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction()
+                .replace(R.id.sw_detail_frame, fragment)
+                .commit();*/
 
-        } else {
+/*        } else {*/
             ingredientsList = new ArrayList<>();
             stepsList = new ArrayList<>();
 
@@ -180,7 +183,7 @@ public class RecipeFragment extends Fragment implements RecipeAdapter.RecipeList
             intent.putParcelableArrayListExtra(STEPS, (ArrayList<? extends Parcelable>) stepsList);
             intent.putExtra(TITLE, recipe.getName());
             startActivity(intent);
-        }
+        // }
     }
 
     @VisibleForTesting

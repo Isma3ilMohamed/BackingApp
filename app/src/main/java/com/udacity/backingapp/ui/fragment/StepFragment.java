@@ -2,9 +2,11 @@ package com.udacity.backingapp.ui.fragment;
 
 
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -40,12 +42,13 @@ import com.udacity.backingapp.model.Steps;
  */
 public class StepFragment extends Fragment {
 
-    private static final String STEP_URL = "url";
+
     //DataBinding Declaration
     FragmentStepBinding mStepBinding;
 
-    Bundle bundle;
+
     private static final String SELECTED_POSITION = "position";
+    private static final String PLAYER_READY = "ready";
     private long position;
 
     private Steps step;
@@ -71,12 +74,10 @@ public class StepFragment extends Fragment {
                              Bundle savedInstanceState) {
         mStepBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_step, container, false);
 
-        position = C.TIME_UNSET;
+
         if (savedInstanceState != null) {
             position = savedInstanceState.getLong(SELECTED_POSITION, C.TIME_UNSET);
-            url = savedInstanceState.getString(STEP_URL);
-            if (position != C.TIME_UNSET)
-                initializePlayer(url);
+
         }
 
 
@@ -101,7 +102,7 @@ public class StepFragment extends Fragment {
         return mStepBinding.getRoot();
     }
 
-    private void initializePlayer(String URL) {
+    private void initializePlayer() {
 
         mStepBinding.playerView.requestFocus();
 
@@ -120,13 +121,12 @@ public class StepFragment extends Fragment {
         DefaultExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
 
         MediaSource mediaSource = new ExtractorMediaSource(
-                Uri.parse(URL),
+                Uri.parse(url),
                 mediaDataSourceFactory, extractorsFactory, null, null);
        /* MediaSource mediaSource = new HlsMediaSource(Uri.parse(url),
                 mediaDataSourceFactory, null, null);*/
 
         player.prepare(mediaSource);
-        player.seekTo(position);
 
     }
 
@@ -135,27 +135,24 @@ public class StepFragment extends Fragment {
         if (player != null) {
             position = player.getCurrentPosition();
             shouldAutoPlay = player.getPlayWhenReady();
+            player.setPlayWhenReady(false);
             player.release();
             player = null;
             trackSelector = null;
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        if ((Util.SDK_INT <= 23 || player == null)) {
-            initializePlayer(url);
-        }
-    }
 
     @Override
     public void onResume() {
         super.onResume();
 
         if ((Util.SDK_INT <= 23 || player == null)) {
-            initializePlayer(url);
+            initializePlayer();
+        } else {
+            player.seekTo(position);
 
+            player.setPlayWhenReady(shouldAutoPlay);
         }
 
     }
@@ -165,16 +162,21 @@ public class StepFragment extends Fragment {
     public void onPause() {
         super.onPause();
         if (Util.SDK_INT > 23) {
-
             releasePlayer();
         }
     }
 
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putLong(SELECTED_POSITION, position);
-        outState.putString(STEP_URL, url);
+        outState.putBoolean(PLAYER_READY, shouldAutoPlay);
     }
 }

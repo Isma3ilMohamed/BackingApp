@@ -24,6 +24,7 @@ import com.udacity.backingapp.databinding.FragmentDetailRecipeBinding;
 import com.udacity.backingapp.model.Ingredients;
 import com.udacity.backingapp.model.Steps;
 import com.udacity.backingapp.test.mIdingResource;
+import com.udacity.backingapp.ui.activity.DetailRecipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -144,6 +145,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
 
         mBundleSaveState.putParcelable(stepStateKey, stepssRecyclerStateParcelable);
     }
+
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {

@@ -53,65 +53,36 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
 
     private void setRecipeImage(String name, String image, ImageView recipeImage) {
+        if (name.equals(NUTTELLA)) {
+            loadImage(image, R.drawable.nutella, recipeImage);
+        } else if (name.equals(BROWNIES)) {
+            loadImage(image, R.drawable.brownies, recipeImage);
+        } else if (name.equals(YELLOW_CAKE)) {
+            loadImage(image, R.drawable.yellowcake, recipeImage);
+        } else if (name.equals(CHEESE_CAKE)) {
+            loadImage(image, R.drawable.cheesecake, recipeImage);
+        }
 
+    }
+
+
+    private void loadImage(String image, int placeholder, ImageView recipeImage) {
         if (image.equals("")) {
-            if (name.equals(NUTTELLA)) {
-                Picasso.with(mContext)
-                        .load(R.drawable.nutella)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            } else if (name.equals(BROWNIES)) {
-                Picasso.with(mContext)
-                        .load(R.drawable.brownies)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            } else if (name.equals(YELLOW_CAKE)) {
-                Picasso.with(mContext)
-                        .load(R.drawable.yellowcake)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            } else if (name.equals(CHEESE_CAKE)) {
-                Picasso.with(mContext)
-                        .load(R.drawable.cheesecake)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            }
+            Picasso.with(mContext)
+                    .load(placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .into(recipeImage);
         } else {
-            if (name.equals(NUTTELLA)) {
-                Picasso.with(mContext)
-                        .load(image)
-                        .placeholder(R.drawable.nutella)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            } else if (name.equals(BROWNIES)) {
-                Picasso.with(mContext)
-                        .load(image)
-                        .placeholder(R.drawable.brownies)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            } else if (name.equals(YELLOW_CAKE)) {
-                Picasso.with(mContext)
-                        .load(image)
-                        .placeholder(R.drawable.yellowcake)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            } else if (name.equals(CHEESE_CAKE)) {
-                Picasso.with(mContext)
-                        .load(image)
-                        .placeholder(R.drawable.cheesecake)
-                        .placeholder(R.drawable.placeholder)
-                        .error(R.drawable.error)
-                        .into(recipeImage);
-            }
+            Picasso.with(mContext)
+                    .load(image)
+                    .placeholder(placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .into(recipeImage);
         }
     }
+
 
     @Override
     public int getItemCount() {
