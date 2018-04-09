@@ -135,7 +135,7 @@ public class DetailRecipe extends AppCompatActivity implements StepAdapter.StepL
         //add layout managers to recyclerview
         mDetailRecipeBinding.stepsListContainer.setLayoutManager(stepManager);
         mDetailRecipeBinding.ingredientsListContainer.setLayoutManager(ingredientsManager);
-        stepAdapter = new StepAdapter(stepsList, getApplicationContext(), this);
+        stepAdapter = new StepAdapter(stepsList, this);
         if (stepAdapter != null) {
             if (idingResource != null) {
                 idingResource.setIdleState(false);

@@ -101,7 +101,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
         }
 
 
-        stepAdapter = new StepAdapter(stepsList, getContext(), this);
+        stepAdapter = new StepAdapter(stepsList, this);
         if (stepAdapter != null) {
             if (idingResource != null) {
                 idingResource.setIdleState(false);

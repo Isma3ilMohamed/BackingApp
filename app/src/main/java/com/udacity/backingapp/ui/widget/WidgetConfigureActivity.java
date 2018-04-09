@@ -103,7 +103,7 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Recipe
                         public void call(List<Recipe> recipes) {
 
                             //Add Data Source to RecyclerView
-                            adapter = new RecipeAdapter(getApplicationContext(), recipes,
+                            adapter = new RecipeAdapter(recipes,
                                     WidgetConfigureActivity.this);
                             mConfigureBinding.rvSelectRecipe.setLayoutAnimation(
                                     AnimationUtils.loadLayoutAnimation(getApplicationContext(),

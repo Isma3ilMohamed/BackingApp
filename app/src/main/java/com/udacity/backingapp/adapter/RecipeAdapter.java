@@ -21,7 +21,7 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder> {
 
-    private Context mContext;
+
     private List<Recipe> recipeList;
     private RecipeListener mCallback;
 
@@ -30,8 +30,8 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public static final String YELLOW_CAKE = "Yellow Cake";
     public static final String CHEESE_CAKE = "Cheesecake";
 
-    public RecipeAdapter(Context mContext, List<Recipe> recipeList, RecipeListener mCallback) {
-        this.mContext = mContext;
+    public RecipeAdapter(List<Recipe> recipeList, RecipeListener mCallback) {
+
         this.recipeList = recipeList;
         this.mCallback = mCallback;
     }
@@ -68,13 +68,13 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
 
     private void loadImage(String image, int placeholder, ImageView recipeImage) {
         if (image.equals("")) {
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(placeholder)
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.error)
                     .into(recipeImage);
         } else {
-            Picasso.with(mContext)
+            Picasso.get()
                     .load(image)
                     .placeholder(placeholder)
                     .placeholder(R.drawable.placeholder)

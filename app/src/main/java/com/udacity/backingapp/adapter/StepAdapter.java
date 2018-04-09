@@ -22,13 +22,13 @@ import java.util.List;
 public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
 
     private List<Steps> steps;
-    private Context context;
+
     private StepListener mCallback;
 
 
-    public StepAdapter(List<Steps> steps, Context context, StepListener mCallback) {
+    public StepAdapter(List<Steps> steps, StepListener mCallback) {
         this.steps = steps;
-        this.context = context;
+
         this.mCallback = mCallback;
     }
 
@@ -43,7 +43,7 @@ public class StepAdapter extends RecyclerView.Adapter<StepAdapter.ViewHolder> {
         Steps step = steps.get(position);
         holder.tv_step_item_id.setText(step.getShortDescription());
         if (!step.getThumbnailURL().equals("")) {
-            Picasso.with(context)
+            Picasso.get()
                     .load(step.getThumbnailURL())
                     .placeholder(R.drawable.placeholder)
                     .error(R.drawable.error)
