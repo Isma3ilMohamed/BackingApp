@@ -46,7 +46,7 @@ dependencies {
     //OKHTTP Login Interceptor
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
     //Picasso + OkHttp
-    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
 
     //EXO Player + Modules
