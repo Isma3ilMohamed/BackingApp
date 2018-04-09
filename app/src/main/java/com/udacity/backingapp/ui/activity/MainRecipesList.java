@@ -66,7 +66,6 @@ public class MainRecipesList extends AppCompatActivity {
                         @Override
                         public void call(List<Recipe> recipes) {
                             recipeList = recipes;
-                            //Toast.makeText(getApplicationContext(), recipes.get(2).getName(), Toast.LENGTH_LONG).show();
                             if (idingResource != null) {
                                 idingResource.setIdleState(false);
                             }

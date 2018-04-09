@@ -55,6 +55,9 @@ public class WidgetConfigureActivity extends AppCompatActivity implements Recipe
         setResult(RESULT_CANCELED);
         mConfigureBinding = DataBindingUtil.setContentView(this, R.layout.activity_widget_configure);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getString(R.string.widget_activity_title));
+        }
 
         if (getResources().getConfiguration().orientation
                 == Configuration.ORIENTATION_PORTRAIT) {

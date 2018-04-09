@@ -16,4 +16,5 @@
     <string name="steps">Steps:</string>
     <string name="internet_connection">Check Your Internet Connection</string>
     <string name="rv_tablet">rv_tablet</string>
+    <string name="widget_activity_title">Select Your Best Recipe</string>
 </resources>
