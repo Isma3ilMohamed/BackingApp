@@ -118,6 +118,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
         }
         mFragmentDetailRecipeBinding.rvIngredients.setAdapter(ingredientAdapter);
 
+        //prevent step fragment from add or replace if exists
         if (savedInstanceState == null) {
             //Start first step
             stepFragment = new StepFragment();

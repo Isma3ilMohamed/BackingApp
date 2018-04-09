@@ -134,10 +134,10 @@ public class StepFragment extends Fragment {
 
         if ((Util.SDK_INT <= 23 || player == null)) {
             initializePlayer();
-            Log.v("my_gag", "initialize printed");
+
         } else {
             player.seekTo(playbackPosition);
-            Log.v("my_gag", "seek to printed");
+
             player.setPlayWhenReady(playWhenReady);
         }
 
