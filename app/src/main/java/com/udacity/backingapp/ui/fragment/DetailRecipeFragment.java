@@ -67,6 +67,7 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
     private Parcelable stepssRecyclerStateParcelable = null;
     //declare bundle to store recycler view state key & parcelable
     private static Bundle mBundleSaveState;
+    private static final String TAG = "STEP_FRAGMENT";
 
     public DetailRecipeFragment() {
         // Required empty public constructor
@@ -125,12 +126,13 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
             bundle.putParcelable(SINGLE_STEP, stepsList.get(0));
             stepFragment.setArguments(bundle);
             getFragmentManager().beginTransaction()
-                    .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment)
+                    .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment, TAG)
                     .commit();
 
         }
         return mFragmentDetailRecipeBinding.getRoot();
     }
+
 
     @Override
     public void onPause() {

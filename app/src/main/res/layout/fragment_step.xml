@@ -13,10 +13,9 @@
             tools:context="com.udacity.backingapp.ui.fragment.StepFragment">
 
             <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-                android:id="@+id/player_view"
+                android:id="@+id/video_view"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/two_hundred"
-                android:focusable="true" />
+                android:layout_height="@dimen/two_hundred" />
 
             <TextView
                 android:id="@+id/tv_main_desc"
@@ -29,7 +28,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/player_view" />
+                app:layout_constraintTop_toBottomOf="@+id/video_view" />
 
             <TextView
                 android:id="@+id/tv_detail_desc"

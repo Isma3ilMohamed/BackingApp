@@ -22,6 +22,7 @@
 
         <activity
             android:name=".ui.activity.DetailRecipe"
+            android:launchMode="singleTop"
             android:parentActivityName=".ui.activity.MainRecipesList" />
 
         <receiver android:name=".ui.widget.RecipeWidget">

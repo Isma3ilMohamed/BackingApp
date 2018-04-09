@@ -50,11 +50,8 @@ dependencies {
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
 
     //EXO Player + Modules
-    implementation 'com.google.android.exoplayer:exoplayer:2.7.1'
+    implementation 'com.google.android.exoplayer:exoplayer:2.6.1'
 
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.7.1'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.7.1'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.7.1'
 
     //Test
     implementation 'com.android.support:support-v4:26.1.0'
