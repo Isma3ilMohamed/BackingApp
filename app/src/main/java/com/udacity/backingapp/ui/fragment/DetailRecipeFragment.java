@@ -54,7 +54,6 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
     public static final String SINGLE_STEP = "step";
 
 
-
     //Adapters
     StepAdapter stepAdapter;
     IngredientAdapter ingredientAdapter;
@@ -119,16 +118,18 @@ public class DetailRecipeFragment extends Fragment implements StepAdapter.StepLi
         }
         mFragmentDetailRecipeBinding.rvIngredients.setAdapter(ingredientAdapter);
 
-        //Start first step
-        stepFragment = new StepFragment();
-        Bundle bundle = new Bundle();
-        if (stepsList != null) {
-            bundle.putParcelable(SINGLE_STEP, stepsList.get(0));
-            stepFragment.setArguments(bundle);
-            getFragmentManager().beginTransaction()
-                    .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment, TAG)
-                    .commit();
+        if (savedInstanceState == null) {
+            //Start first step
+            stepFragment = new StepFragment();
+            Bundle bundle = new Bundle();
+            if (stepsList != null) {
+                bundle.putParcelable(SINGLE_STEP, stepsList.get(0));
+                stepFragment.setArguments(bundle);
+                getFragmentManager().beginTransaction()
+                        .replace(mFragmentDetailRecipeBinding.stepDetailContainer.getId(), stepFragment, TAG)
+                        .commit();
 
+            }
         }
         return mFragmentDetailRecipeBinding.getRoot();
     }

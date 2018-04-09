@@ -66,7 +66,7 @@ public class BackingAppTest {
                 .perform(click());
 
         takeAsecond();
-        //takeSecond();
+
         onView(allOf(withId(R.id.rv_recipe_list), isDisplayed())).perform(swipeUp());
 
         onView(allOf(withId(R.id.rv_recipe_list)))
@@ -85,7 +85,6 @@ public class BackingAppTest {
         B_testRecyclerViewMoveToSpecificPosition();
         intended(hasComponent(DetailRecipe.class.getName()));
 
-
     }
 
     /*
@@ -96,9 +95,9 @@ public class BackingAppTest {
     public void D_testExoPlayer() {
         B_testRecyclerViewMoveToSpecificPosition();
 
-        onView(withId(R.id.player_view))
+        onView(withId(R.id.video_view))
                 .check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.player_view),
+        onView(allOf(withId(R.id.video_view),
                 withClassName(is(SimpleExoPlayerView.class.getName()))));
 
     }
